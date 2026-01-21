@@ -2,6 +2,8 @@
 
 **OBS Floater** is a lightweight, floating status bar for OBS that displays real-time recording and streaming status overlay designed specifically for single-monitor streamers and recorders.
 
+🎬 [OBS Floater Demo](https://youtu.be/edJDNuTKM0E) 
+
 ## Requirements
 
 Before running the script, ensure you have the following installed on your system:
@@ -46,3 +48,11 @@ pip install PyQt6 obs-websocket-py
 - **Position:** Look at launcher_pro.py Edit `self.move(x, y)` in `obs_floater.py` to change where the bar appears on your screen.
 - **Size:** Edit `self.setFixedSize(width, height)` to change the bar dimensions.
 - **Colors:** You can modify the HEX codes (e.g., `#ff4d4d` for red) in the `update_styles` function.
+
+## Shameless Promotion
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D41SPX1E)
+
+👍 Subsribe to [OpenQuestline](https://www.youtube.com/channel/UC3SxeNanAnhtBQMuBbrskdg/?sub_confirmation=1). My small game guide channel.  
+🐦 Follow me on [Twitter](https://x.com/kuswanto). Yes, I am old and I still called it Twitter..  
+🧵 Follow me on [Threads](https://www.threads.com/@ncus).  
