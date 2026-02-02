@@ -2,6 +2,7 @@ import sys
 import os
 from PyQt6.QtWidgets import QApplication, QWidget, QLabel
 from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtGui import QPixmap
 from obswebsocket import obsws, requests
 
 # --- CONFIGURATION ---
@@ -62,11 +63,21 @@ class GameBarOverlay(QWidget):
         """)
 
         # Shared Style for clean labels (No borders, no outline)
-        self.label_style = "border: none; outline: none; background: transparent;"
+        self.label_style = "border: none; outline: none; background: transparent; margin: 0; padding: 0;"
+
+        # Load icons
+        self.record_off_pixmap = QPixmap(os.path.join(os.path.dirname(__file__), "icons", "record-off.png"))
+        self.record_on_pixmap = QPixmap(os.path.join(os.path.dirname(__file__), "icons", "record-on.png"))
+        self.stream_off_pixmap = QPixmap(os.path.join(os.path.dirname(__file__), "icons", "stream-off.png"))
+        self.stream_on_pixmap = QPixmap(os.path.join(os.path.dirname(__file__), "icons", "stream-on.png"))
 
         # RECORDING UI
-        self.record_dot = QLabel("◉", self.container)
-        self.record_dot.move(25, 10)
+        self.record_dot = QLabel(self.container)
+        self.record_dot.setPixmap(self.record_off_pixmap)
+        self.record_dot.setScaledContents(True)
+        self.record_dot.setFixedSize(13, 13)
+        self.record_dot.move(27, 17)
+        self.record_dot.setStyleSheet(self.label_style)
         self.record_label = QLabel("Not Recording", self.container)
         self.record_label.setFixedWidth(160)
         self.record_label.move(48, 14)
@@ -77,8 +88,12 @@ class GameBarOverlay(QWidget):
         self.sep.move(205, 14)
 
         # STREAMING UI
-        self.stream_dot = QLabel("◈", self.container)
-        self.stream_dot.move(190, 10)
+        self.stream_dot = QLabel(self.container)
+        self.stream_dot.setPixmap(self.stream_off_pixmap)
+        self.stream_dot.setScaledContents(True)
+        self.stream_dot.setFixedSize(27, 20)
+        self.stream_dot.move(180, 14)
+        self.stream_dot.setStyleSheet(self.label_style)
         self.stream_label = QLabel("Not Streaming", self.container)
         self.stream_label.setFixedWidth(160)
         self.stream_label.move(214, 14)
@@ -97,21 +112,21 @@ class GameBarOverlay(QWidget):
     def update_styles(self, rec_active, stream_active, rec_time, stream_time):
         # RECORDING STYLES
         if rec_active:
-            self.record_dot.setStyleSheet(f"color: #ff4d4d; font-size: 20px; {self.label_style}")
+            self.record_dot.setPixmap(self.record_on_pixmap)
             self.record_label.setText(f"{rec_time}")
             self.record_label.setStyleSheet(f"color: white; font-family: 'Segoe UI'; font-weight: bold; font-size: 14px; {self.label_style}")
         else:
-            self.record_dot.setStyleSheet(f"color: #555; font-size: 20px; {self.label_style}")
+            self.record_dot.setPixmap(self.record_off_pixmap)
             self.record_label.setText("Not Recording")
             self.record_label.setStyleSheet(f"color: #777; font-family: 'Segoe UI'; font-weight: bold; font-size: 14px; {self.label_style}")
 
         # STREAMING STYLES
         if stream_active:
-            self.stream_dot.setStyleSheet(f"color: #a450ff; font-size: 20px; {self.label_style}")
+            self.stream_dot.setPixmap(self.stream_on_pixmap)
             self.stream_label.setText(f"{stream_time}")
             self.stream_label.setStyleSheet(f"color: white; font-family: 'Segoe UI'; font-weight: bold; font-size: 14px; {self.label_style}")
         else:
-            self.stream_dot.setStyleSheet(f"color: #555; font-size: 20px; {self.label_style}")
+            self.stream_dot.setPixmap(self.stream_off_pixmap)
             self.stream_label.setText("Not Streaming")
             self.stream_label.setStyleSheet(f"color: #777; font-family: 'Segoe UI'; font-weight: bold; font-size: 14px; {self.label_style}")
 
