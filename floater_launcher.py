@@ -10,7 +10,7 @@ import os
 # --- SETTINGS ---
 # Path to your Python 3.11.x instalation path
 PYTHON_EXE = r"C:\ProgramData\miniconda3\python.exe"
-SCRIPT_NAME = "obs_floater.py"
+SCRIPT_NAME = "statusfloat.py"
 
 process = None
 

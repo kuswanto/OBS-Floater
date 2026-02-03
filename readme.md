@@ -1,12 +1,12 @@
-# OBS Floater
+# StatusFloat
 
 
-**OBS Floater** is a lightweight, floating status bar for OBS that displays real-time recording and streaming status overlay designed specifically for single-monitor streamers and recorders.
+**StatusFloat** is a lightweight, floating status bar for OBS that displays real-time recording and streaming status overlay designed specifically for single-monitor streamers and recorders.
 
-🎬 [OBS Floater Demo](https://youtu.be/edJDNuTKM0E) 
+🎬 [StatusFloat Demo](https://youtu.be/edJDNuTKM0E) 
 
-Preview on 2560x1440 screen.
-![OBS Floater Preview](obs-floater-preview.jpg)
+Preview on screen.
+![StatusFloat Preview](statusfloat-preview.jpg)
 
 ## Requirements
 
